@@ -1,7 +1,11 @@
 {
 	"name": "tmio",
-	"module": "src/index.ts",
 	"type": "module",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
 	"version": "1.0.0",
 	"description": "Trackmania.io API client",
 	"keywords": [
@@ -17,10 +21,13 @@
 	"license": "MIT",
 	"scripts": {
 		"lint": "biome lint",
-		"format": "biome format --write"
+		"format": "biome format --write",
+		"build": "tsup"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.1.3"
+		"@biomejs/biome": "2.1.3",
+		"@types/node": "^24.2.0",
+		"tsup": "^8.5.0"
 	},
 	"peerDependencies": {
 		"typescript": "^5"
