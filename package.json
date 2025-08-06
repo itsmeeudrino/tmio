@@ -17,6 +17,10 @@
 		"npm",
 		"typescript"
 	],
+	"repository": {
+		"url": "https://github.com/itsmeeudrino/tmio.git",
+		"type": "git"
+	},
 	"author": "Eudrino",
 	"license": "MIT",
 	"scripts": {
