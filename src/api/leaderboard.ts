@@ -61,7 +61,7 @@ export namespace Leaderboard {
 		options: { offset: number; length: number } = { offset: 0, length: 100 },
 	) {
 		return Utils.fetchAndDecode(
-			`https://trackmania.io/api/leaderboard/map//${map}?offset=${options.offset}&length=${options.length}`,
+			`https://trackmania.io/api/leaderboard/map/${map}?offset=${options.offset}&length=${options.length}`,
 			TLeaderboard,
 		);
 	}
