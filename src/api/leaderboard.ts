@@ -44,6 +44,29 @@ export namespace Leaderboard {
 	}
 
 	/**
+	 * Fetches the leaderboard for a specific map.
+	 *
+	 * @param map - The ID of the map to fetch the leaderboard for.
+	 * @param options - Optional parameters for pagination (offset and length).
+	 *
+	 * @example
+	 *
+	 * fetchMapLeaderboard('mapId').then(leaderboard => {
+	 *     console.log(leaderboard);
+	 * });
+	 *
+	 */
+	export function fetchMapLeaderboard(
+		map: string,
+		options: { offset: number; length: number } = { offset: 0, length: 100 },
+	) {
+		return Utils.fetchAndDecode(
+			`https://trackmania.io/api/leaderboard/map//${map}?offset=${options.offset}&length=${options.length}`,
+			TLeaderboard,
+		);
+	}
+
+	/**
 	 * Fetches the personal best for a specific map for the user.
 	 *
 	 * @param map - The ID of the map to fetch the personal best for.
