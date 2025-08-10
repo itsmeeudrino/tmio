@@ -81,7 +81,7 @@ export namespace Leaderboard {
 	 */
 	export function fetchMapPersonalBest(map: string, auth: string) {
 		return Utils.fetchAndDecode(
-			`https://trackmania.io/api/leaderboard/personal/${map}`,
+			`https://trackmania.io/api/leaderboard/personal/map/${map}`,
 			TPersonalRecord,
 			auth,
 		);
