@@ -13,6 +13,7 @@ export type FetchFn = (
 ) => Promise<Response>;
 
 export let customFetch: FetchFn = fetch;
+export let userAgent: string | null = null;
 
 /**
  * Sets a custom fetch function to be used by the other modules.
@@ -36,6 +37,22 @@ export let customFetch: FetchFn = fetch;
  */
 export const useCustomFetch = (fetchVal: FetchFn) => {
 	customFetch = fetchVal;
+};
+
+/**
+ * Sets a custom user agent to be used by the other modules.
+ *
+ * @param userAgentVal - The custom user agent string to use.
+ *
+ * @example
+ *
+ * import { useUserAgent } from "./api/utils";
+ *
+ * // Set a custom user agent
+ * useUserAgent("my-custom-user-agent/1.0");
+ */
+export const useUserAgent = (userAgentVal: string) => {
+	userAgent = userAgentVal;
 };
 
 /**
@@ -63,7 +80,12 @@ export namespace Utils {
 		auth?: string,
 	) {
 		const res = await customFetch(url, {
-			headers: auth ? [["Authorization", auth]] : undefined,
+			headers: auth
+				? [
+						["Authorization", auth],
+						["User-Agent", userAgent ?? "tmio-api-client"],
+					]
+				: [["User-Agent", userAgent ?? "tmio-api-client"]],
 		});
 
 		const json = await res.json();
