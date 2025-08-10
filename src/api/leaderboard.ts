@@ -67,6 +67,27 @@ export namespace Leaderboard {
 	}
 
 	/**
+	 * Fetches the personal best for a specific map for the authenticated user.
+	 *
+	 * @param map - The ID of the map to fetch the personal best for.
+	 * @param auth - The authentication token for the request (obtained from Trackmania.io).
+	 *
+	 * @example
+	 *
+	 * fetchMapPersonalBest('mapId', 'authToken').then(record => {
+	 *     console.log(record);
+	 * });
+	 *
+	 */
+	export function fetchMapPersonalBest(map: string, auth: string) {
+		return Utils.fetchAndDecode(
+			`https://trackmania.io/api/leaderboard/personal/${map}`,
+			TPersonalRecord,
+			auth,
+		);
+	}
+
+	/**
 	 * Fetches the personal best for a specific map for the user.
 	 *
 	 * @param map - The ID of the map to fetch the personal best for.
